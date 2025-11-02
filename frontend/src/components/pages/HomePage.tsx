@@ -98,7 +98,7 @@ export default function HomePage() {
 
     fetchData();
   }, []);
-// ⬇⬇ DOWNLOAD-ALL FILES BUTTON (paste below your existing useEffect, before the return)
+// REMOVED DOWNLOAD BUTTON
 useEffect(() => {
   // Guard for SSR/Astro
   if (typeof window === "undefined" || typeof document === "undefined") return;
