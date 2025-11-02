@@ -1,9 +1,9 @@
 import { MemberProvider } from '@/integrations';
 import { createBrowserRouter, RouterProvider, Navigate, Outlet } from 'react-router-dom';
-import HomePage from '@/components/pages/HomePage';
-import CaseStudiesPage from '@/components/pages/CaseStudiesPage';
-import FAQPage from '@/components/pages/FAQPage';
-import ContactPage from '@/components/pages/ContactPage';
+import HomePage from '@/components/pages/HomePage.tsx';
+import CaseStudiesPage from '@/components/pages/CaseStudiesPage.tsx';
+import FAQPage from '@/components/pages/FAQPage.tsx';
+import ContactPage from '@/components/pages/ContactPage.tsx';
 
 // Simple scroll to top component
 const ScrollToTop = () => {
