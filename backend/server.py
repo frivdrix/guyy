@@ -115,7 +115,7 @@ async def root():
 
 
 # Partner Logos endpoints
-@api_router.get("/partnerlogos", response_model=PaginatedResponse)
+@api_router.get("/partnerlogos")
 async def get_partner_logos():
     try:
         logos = await db.partnerlogos.find({}, {"_id": 0}).to_list(1000)
@@ -125,19 +125,19 @@ async def get_partner_logos():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@api_router.post("/partnerlogos", response_model=PartnerLogo)
+@api_router.post("/partnerlogos")
 async def create_partner_logo(logo: PartnerLogo):
     try:
-        doc = logo.model_dump()
+        doc = logo.model_dump(by_alias=True)
         await db.partnerlogos.insert_one(doc)
-        return logo
+        return doc
     except Exception as e:
         logger.error(f"Error creating partner logo: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
 # Services endpoints
-@api_router.get("/services", response_model=PaginatedResponse)
+@api_router.get("/services")
 async def get_services():
     try:
         services = await db.services.find({}, {"_id": 0}).to_list(1000)
@@ -147,19 +147,19 @@ async def get_services():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@api_router.post("/services", response_model=Service)
+@api_router.post("/services")
 async def create_service(service: Service):
     try:
-        doc = service.model_dump()
+        doc = service.model_dump(by_alias=True)
         await db.services.insert_one(doc)
-        return service
+        return doc
     except Exception as e:
         logger.error(f"Error creating service: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
 # Case Studies endpoints
-@api_router.get("/casestudies", response_model=PaginatedResponse)
+@api_router.get("/casestudies")
 async def get_case_studies():
     try:
         studies = await db.casestudies.find({}, {"_id": 0}).to_list(1000)
@@ -169,19 +169,19 @@ async def get_case_studies():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@api_router.post("/casestudies", response_model=CaseStudy)
+@api_router.post("/casestudies")
 async def create_case_study(case_study: CaseStudy):
     try:
-        doc = case_study.model_dump()
+        doc = case_study.model_dump(by_alias=True)
         await db.casestudies.insert_one(doc)
-        return case_study
+        return doc
     except Exception as e:
         logger.error(f"Error creating case study: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
 # Testimonials endpoints
-@api_router.get("/testimonials", response_model=PaginatedResponse)
+@api_router.get("/testimonials")
 async def get_testimonials():
     try:
         testimonials = await db.testimonials.find({}, {"_id": 0}).to_list(1000)
@@ -191,19 +191,19 @@ async def get_testimonials():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@api_router.post("/testimonials", response_model=Testimonial)
+@api_router.post("/testimonials")
 async def create_testimonial(testimonial: Testimonial):
     try:
-        doc = testimonial.model_dump()
+        doc = testimonial.model_dump(by_alias=True)
         await db.testimonials.insert_one(doc)
-        return testimonial
+        return doc
     except Exception as e:
         logger.error(f"Error creating testimonial: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
 # FAQs endpoints
-@api_router.get("/frequentlyaskedquestions", response_model=PaginatedResponse)
+@api_router.get("/frequentlyaskedquestions")
 async def get_faqs():
     try:
         faqs = await db.frequentlyaskedquestions.find({}, {"_id": 0}).to_list(1000)
@@ -215,12 +215,12 @@ async def get_faqs():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@api_router.post("/frequentlyaskedquestions", response_model=FAQ)
+@api_router.post("/frequentlyaskedquestions")
 async def create_faq(faq: FAQ):
     try:
-        doc = faq.model_dump()
+        doc = faq.model_dump(by_alias=True)
         await db.frequentlyaskedquestions.insert_one(doc)
-        return faq
+        return doc
     except Exception as e:
         logger.error(f"Error creating FAQ: {e}")
         raise HTTPException(status_code=500, detail=str(e))
