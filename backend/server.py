@@ -29,11 +29,11 @@ api_router = APIRouter(prefix="/api")
 # ==================== Data Models ====================
 
 class PartnerLogo(BaseModel):
-    model_config = ConfigDict(extra="ignore")
+    model_config = ConfigDict(extra="ignore", populate_by_name=True)
     
-    _id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    _createdDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc))
-    _updatedDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc))
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()), alias="_id")
+    createdDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc), alias="_createdDate")
+    updatedDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc), alias="_updatedDate")
     partnerName: Optional[str] = None
     logoImage: Optional[str] = None
     websiteUrl: Optional[str] = None
@@ -42,11 +42,11 @@ class PartnerLogo(BaseModel):
 
 
 class Service(BaseModel):
-    model_config = ConfigDict(extra="ignore")
+    model_config = ConfigDict(extra="ignore", populate_by_name=True)
     
-    _id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    _createdDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc))
-    _updatedDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc))
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()), alias="_id")
+    createdDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc), alias="_createdDate")
+    updatedDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc), alias="_updatedDate")
     serviceName: Optional[str] = None
     shortDescription: Optional[str] = None
     detailedDescription: Optional[str] = None
@@ -57,11 +57,11 @@ class Service(BaseModel):
 
 
 class CaseStudy(BaseModel):
-    model_config = ConfigDict(extra="ignore")
+    model_config = ConfigDict(extra="ignore", populate_by_name=True)
     
-    _id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    _createdDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc))
-    _updatedDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc))
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()), alias="_id")
+    createdDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc), alias="_createdDate")
+    updatedDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc), alias="_updatedDate")
     caseStudyTitle: Optional[str] = None
     clientName: Optional[str] = None
     industry: Optional[str] = None
@@ -74,11 +74,11 @@ class CaseStudy(BaseModel):
 
 
 class Testimonial(BaseModel):
-    model_config = ConfigDict(extra="ignore")
+    model_config = ConfigDict(extra="ignore", populate_by_name=True)
     
-    _id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    _createdDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc))
-    _updatedDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc))
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()), alias="_id")
+    createdDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc), alias="_createdDate")
+    updatedDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc), alias="_updatedDate")
     clientName: Optional[str] = None
     clientTitleCompany: Optional[str] = None
     testimonialText: Optional[str] = None
@@ -88,11 +88,11 @@ class Testimonial(BaseModel):
 
 
 class FAQ(BaseModel):
-    model_config = ConfigDict(extra="ignore")
+    model_config = ConfigDict(extra="ignore", populate_by_name=True)
     
-    _id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    _createdDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc))
-    _updatedDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc))
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()), alias="_id")
+    createdDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc), alias="_createdDate")
+    updatedDate: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc), alias="_updatedDate")
     question: Optional[str] = None
     answer: Optional[str] = None
     category: Optional[str] = None
