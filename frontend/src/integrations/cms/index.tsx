@@ -1,57 +1,62 @@
-import axios from 'axios';
+// Mock data for Vercel deployment (no backend needed)
+const mockData: Record<string, any[]> = {
+  partnerlogos: [],
+  services: [],
+  casestudies: [],
+  testimonials: [],
+  frequentlyaskedquestions: []
+};
 
-// Get backend URL from environment variable
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || '';
-
-// Real CMS Service connected to backend API
+// CMS Service with mock data for standalone Vercel deployment
 export class BaseCrudService {
   static async getAll<T>(collectionName: string): Promise<{ items: T[]; totalCount: number }> {
-    try {
-      const response = await axios.get(`${BACKEND_URL}/api/${collectionName}`);
-      return response.data;
-    } catch (error) {
-      console.error(`Error fetching ${collectionName}:`, error);
-      return { items: [], totalCount: 0 };
-    }
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 100));
+    
+    const items = (mockData[collectionName] || []) as T[];
+    return { items, totalCount: items.length };
   }
 
   static async getById<T>(collectionName: string, id: string): Promise<T | null> {
-    try {
-      const response = await axios.get(`${BACKEND_URL}/api/${collectionName}/${id}`);
-      return response.data;
-    } catch (error) {
-      console.error(`Error fetching ${collectionName} by id:`, error);
-      return null;
-    }
+    await new Promise(resolve => setTimeout(resolve, 100));
+    
+    const items = mockData[collectionName] || [];
+    const item = items.find((item: any) => item.id === id);
+    return item as T || null;
   }
 
   static async create<T>(collectionName: string, data: Partial<T>): Promise<T | null> {
-    try {
-      const response = await axios.post(`${BACKEND_URL}/api/${collectionName}`, data);
-      return response.data;
-    } catch (error) {
-      console.error(`Error creating ${collectionName}:`, error);
-      return null;
+    await new Promise(resolve => setTimeout(resolve, 100));
+    
+    const newItem = { ...data, id: Date.now().toString() } as T;
+    if (!mockData[collectionName]) {
+      mockData[collectionName] = [];
     }
+    mockData[collectionName].push(newItem);
+    return newItem;
   }
 
   static async update<T>(collectionName: string, id: string, data: Partial<T>): Promise<T | null> {
-    try {
-      const response = await axios.put(`${BACKEND_URL}/api/${collectionName}/${id}`, data);
-      return response.data;
-    } catch (error) {
-      console.error(`Error updating ${collectionName}:`, error);
-      return null;
+    await new Promise(resolve => setTimeout(resolve, 100));
+    
+    const items = mockData[collectionName] || [];
+    const index = items.findIndex((item: any) => item.id === id);
+    if (index !== -1) {
+      items[index] = { ...items[index], ...data };
+      return items[index] as T;
     }
+    return null;
   }
 
   static async delete(collectionName: string, id: string): Promise<boolean> {
-    try {
-      await axios.delete(`${BACKEND_URL}/api/${collectionName}/${id}`);
+    await new Promise(resolve => setTimeout(resolve, 100));
+    
+    const items = mockData[collectionName] || [];
+    const index = items.findIndex((item: any) => item.id === id);
+    if (index !== -1) {
+      items.splice(index, 1);
       return true;
-    } catch (error) {
-      console.error(`Error deleting ${collectionName}:`, error);
-      return false;
     }
+    return false;
   }
 }
