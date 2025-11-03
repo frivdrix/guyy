@@ -10,7 +10,7 @@ import sys
 from typing import Dict, Any
 
 # Backend URL from frontend environment
-BACKEND_URL = "https://fix-compile-errors.preview.emergentagent.com"
+BACKEND_URL = "https://hue-vercel.preview.emergentagent.com"
 
 def test_endpoint(method: str, endpoint: str, expected_status: int = 200, data: Dict[Any, Any] = None) -> Dict[str, Any]:
     """
