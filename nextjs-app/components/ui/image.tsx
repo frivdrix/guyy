@@ -7,10 +7,12 @@ const FALLBACK_IMAGE_URL = "https://placehold.co/600x400?text=Image";
 export type ImageProps = ImgHTMLAttributes<HTMLImageElement>;
 
 export const Image = forwardRef<HTMLImageElement, ImageProps>(({ src, alt = "Image", ...props }, ref) => {
-  const [imgSrc, setImgSrc] = useState<string | undefined>(src);
+  const [imgSrc, setImgSrc] = useState<string | undefined>(typeof src === 'string' ? src : undefined);
 
   useEffect(() => {
-    setImgSrc(src);
+    if (typeof src === 'string') {
+      setImgSrc(src);
+    }
   }, [src]);
 
   if (!src) {
