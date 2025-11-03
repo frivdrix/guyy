@@ -29,7 +29,8 @@ module.exports = {
                         },
                         primary: {
                                 DEFAULT: 'hsl(var(--primary))',
-                                foreground: 'hsl(var(--primary-foreground))'
+                                foreground: 'hsl(var(--primary-foreground))',
+                                hover: '#00e066'
                         },
                         secondary: {
                                 DEFAULT: 'hsl(var(--secondary))',
