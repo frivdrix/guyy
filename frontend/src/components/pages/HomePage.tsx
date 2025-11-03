@@ -113,7 +113,7 @@ useEffect(() => {
     position: "fixed",
     bottom: "20px",
     right: "20px",
-    zIndex: 9999,
+    zIndex: "9999",
     padding: "20px 40px",
     background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
     color: "white",
