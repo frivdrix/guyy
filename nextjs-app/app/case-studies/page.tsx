@@ -27,7 +27,7 @@ export default function CaseStudiesPage() {
   }, []);
 
   // Get unique industries
-  const industries = ['All', ...Array.from(new Set(caseStudies.map(cs => cs.industry).filter(Boolean)))];
+  const industries = ['All', ...Array.from(new Set(caseStudies.map(cs => cs.industry).filter(Boolean)))] as string[];
 
   // Filter case studies by industry
   const filteredCaseStudies = selectedIndustry === 'All'
