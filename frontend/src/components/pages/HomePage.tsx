@@ -125,7 +125,7 @@ useEffect(() => {
     boxShadow: "0 8px 20px rgba(0,0,0,0.3)",
     transition: "all 0.2s ease",
     fontFamily: "system-ui, -apple-system, sans-serif",
-  } as CSSStyleDeclaration);
+  });
 
   // Hover effects
   const onEnter = () => {
