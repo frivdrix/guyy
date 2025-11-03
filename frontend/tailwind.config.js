@@ -57,7 +57,10 @@ module.exports = {
                                 '3': 'hsl(var(--chart-3))',
                                 '4': 'hsl(var(--chart-4))',
                                 '5': 'hsl(var(--chart-5))'
-                        }
+                        },
+                        // Direct color values for easier use
+                        'primary-green': '#00ff77',
+                        'primary-green-hover': '#00e066'
                 },
                 keyframes: {
                         'accordion-down': {
